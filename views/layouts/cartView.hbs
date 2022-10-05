@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="list-products">
+      <h2>Products</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Productos</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Thumbnail</th>
+          </tr>
+        </thead>
+
+        <tbody id="tbody">
+
+          {{#each data}}
+            <tr>
+              <td>{{this.nombre}}</td>
+              <td>{{this.descripcion}}</td>
+              <td>{{this.precio}}</td>
+              <td>{{this.stock}}</td>
+              <td><img src={{this.thumbnail}} alt="" /></td>
+            </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
