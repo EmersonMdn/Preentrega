@@ -1,5 +1,6 @@
+
 const express = require("express");
-const app = express();
+
 const db = require("./database.js");
 const DB = new db("data");
 const fs = require("fs");
@@ -27,25 +28,22 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { nombre, descripcion, thumbnail, codigo, precio, stock } = req.body;
-  const newData = await DB.newProduct({
-    nombre,
-    descripcion,
-    thumbnail,
-    codigo,
-    precio,
-    stock,
-  });
-  return res.redirect("/api/productos");
+  const newData = { nombre, descripcion, thumbnail, codigo, precio, stock };
+  await DB.newProduct(newData);
+  res.redirect("/api/productos");
 });
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-
-  let data = await DB.getAllProducts();
-  let { title, price, thumbnail } = req.body;
-  const index = data.findIndex((x) => x.id == id);
-  data[index] = { title, price, thumbnail };
-  await fs.promises.writeFile("../data/products.json", data);
+  try {
+    let { nombre, descripcion, thumbnail, codigo, precio, stock } = req.body;
+    const newData = { nombre, descripcion, thumbnail, codigo, precio, stock, id };
+    await DB.editProduct(newData, id);
+    res.send('Cambiado');
+  } catch (err) {
+    console.log("Producto no encontrado");
+    res.status(400).send("Not Found" + err);
+  }
 });
 
 router.delete("/:id", async (req, res) => {

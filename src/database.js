@@ -6,10 +6,16 @@ class Product {
   }
 
   //editar un producto
-  async editProduct(newObj) {
+  async editProduct(newObj, id) {
     const data = await this.getAllProducts();
-    fs.promises.writeFile(`${this.file}/products.json`, newObj);
-    console.log('Editado...');
+    const index = data.findIndex((product) => product.id == id);
+
+    data[index] = newObj;
+
+    const dataString = JSON.stringify(data);
+
+    fs.promises.writeFile(`${this.file}/products.json`, dataString);
+    console.log(`Cambiado: ${data[index]}`);
   }
 
   //crear producto
@@ -57,19 +63,6 @@ class Product {
       return findProduct;
     } else {
       throw new Error("Product not found");
-    }
-  }
-
-  
-  async getMessages() {
-    try {
-      const data = await fs.promises.readFile(
-        `${this.file}/chat.json`,
-        "utf-8"
-      );
-      return JSON.parse(data);
-    } catch (err) {
-      return [];
     }
   }
 }
