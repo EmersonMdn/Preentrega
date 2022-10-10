@@ -14,14 +14,17 @@ class Product {
 
     const dataString = JSON.stringify(data);
 
-    fs.promises.writeFile(`${this.file}/products.json`, dataString);
+    await fs.promises.writeFile(
+      `./public/${this.file}/products.json`,
+      dataString
+    );
     console.log(`Cambiado: ${data[index]}`);
   }
 
   //crear producto
   async newProduct(objProduct) {
     const data = await fs.promises.readFile(
-      `${this.file}/products.json`,
+      `./public/${this.file}/products.json`,
       "utf-8"
     );
     const products = JSON.parse(data);
@@ -34,7 +37,7 @@ class Product {
     products.push(objProduct);
     const productsString = JSON.stringify(products);
     await fs.promises.writeFile(
-      `${this.file}/products.json`,
+      `./public/${this.file}/products.json`,
       productsString,
       "utf-8"
     );
@@ -44,7 +47,7 @@ class Product {
   //obtener productos
   async getAllProducts() {
     const data = await fs.promises.readFile(
-      `${this.file}/products.json`,
+      `./public/${this.file}/products.json`,
       "utf-8"
     );
     return JSON.parse(data);
@@ -53,7 +56,7 @@ class Product {
   //obtener productos por ID
   async getProductsById(id) {
     const data = await fs.promises.readFile(
-      `${this.file}/products.json`,
+      `./public/${this.file}/products.json`,
       "utf-8"
     );
     const products = JSON.parse(data);
@@ -64,6 +67,20 @@ class Product {
     } else {
       throw new Error("Product not found");
     }
+  }
+
+  //Elimina productos por ID
+  async removeProduct(id) {
+    const data = await this.getAllProducts();
+    const newData = data.filter((product) => product.id != id);
+
+    const newDataString = JSON.stringify(newData);
+
+    await fs.promises.writeFile(
+      `./public/${this.file}/products.json`,
+      newDataString
+    );
+    return newData;
   }
 }
 

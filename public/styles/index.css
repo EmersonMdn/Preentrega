@@ -1,7 +1,20 @@
-.items-container{
-    background-color: red;
-    display: flex;
-}
 *{
-    background-color: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#list-items{
+    text-align: center;
+    justify-content: center;
+}
+.cards{
+    padding: 5px 10px;
+}
+.cartlist{
+    border:2px solid rgba(255, 0, 0, 0.164);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px auto;
+
 }
