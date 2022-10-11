@@ -12,8 +12,9 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const data = await DB.newCart();
-  console.log(`Nuevo carrito: ${JSON.stringify(data)}`);
-  res.redirect("/");
+  // console.log(`Nuevo carrito: ${JSON.stringify(data)}`);
+  console.log({data})
+  res.send(`Carrito creado con id: ${data.id}`);
 });
 
 router.delete("/:id", async (req, res) => {

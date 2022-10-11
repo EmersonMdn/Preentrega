@@ -7,6 +7,7 @@ const { Router } = express;
 const router = Router();
 
 router.get("/:id?", async (req, res) => {
+  // faltaria la opcion para traer por id.
   const data = await DB.getAllProducts();
   res.send(data);
 });
@@ -14,9 +15,12 @@ router.get("/:id?", async (req, res) => {
 router.post("/", async (req, res) => {
   const { nombre, descripcion, thumbnail, codigo, precio, stock } = req.body;
   const newData = { nombre, descripcion, thumbnail, codigo, precio, stock };
-  await DB.newProduct(newData);
-  res.redirect("/");
-  res.send(newData);
+  // se puede pasar directamente el obj sin asignar a una variable
+  //  await DB.newProduct({ nombre, descripcion, thumbnail, codigo, precio, stock });
+  const rta= await DB.newProduct(newData);
+  // res.redirect("/"); // no es posible redireccionar y luego enviar respuesta. 
+  // Debe haber una sola respuesta
+  res.send(`Producto agregado correctamente con id: ${rta}`);
 });
 
 router.put("/:id", async (req, res) => {

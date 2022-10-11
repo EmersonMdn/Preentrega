@@ -11,7 +11,16 @@ class Product {
     const index = data.findIndex((product) => product.id == id);
 
     data[index] = newObj;
+// deberiamos dar la opcion de modificar solo algunas propiedades del producto, 
+//por ej si solo necesito actualizar el precio
+/**
+ para eso podes aprovechar que ya tenes el indice del prod y que en newObj, estas recibiendo todas las propiedades, y validar una por una los valores que recibis
+ si tiene valor, lo asignas, sino, queda el valor que esta guardado.
 
+ Por ej: 
+  data[index].nombre = nombre ? nombre : data[index].nombre ;
+  Asi con cada propiedad.
+ */
     const dataString = JSON.stringify(data);
 
     await fs.promises.writeFile(
@@ -28,11 +37,13 @@ class Product {
       "utf-8"
     );
     const products = JSON.parse(data);
-    const id = products.length + 1;
-    const timestamp = new Date().toLocaleString();
+//    const id = products.length + 1; // se puede asignar directamente, para evitar crear una variable demas.
+// const timestamp = new Date().toLocaleString();
+// objProduct.id = id;
+// objProduct.timestamp = timestamp;
 
-    objProduct.id = id;
-    objProduct.timestamp = timestamp;
+    objProduct.id = products.length + 1; 
+    objProduct.timestamp = new Date().toLocaleString();
 
     products.push(objProduct);
     const productsString = JSON.stringify(products);
@@ -41,7 +52,9 @@ class Product {
       productsString,
       "utf-8"
     );
-    return products;
+    //deberiamos devolver el id del prod agregado -> 
+    // return products;
+    return objProduct.id
   }
 
   //obtener productos
@@ -73,13 +86,15 @@ class Product {
   async removeProduct(id) {
     const data = await this.getAllProducts();
     const newData = data.filter((product) => product.id != id);
-
+    // faltaria verificar si el producto fue eliminado.
+    // podrias comparar si hay diferencia entre el .length de data y el de newData
     const newDataString = JSON.stringify(newData);
 
     await fs.promises.writeFile(
       `./public/${this.file}/products.json`,
       newDataString
     );
+    // responder mensaje de prod eliminado
     return newData;
   }
 }

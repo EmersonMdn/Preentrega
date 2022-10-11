@@ -1,12 +1,45 @@
 [
   {
-    "id": 0,
-    "timestamp": {},
-    "nombre": "Emer",
-    "descripcion": "",
-    "codigo": 0,
-    "foto": "",
-    "precio": 0,
-    "stock": 0
-  }
+    "id": 1,
+    "timestamp": "9/10/2022 17:51:25",
+    "productos": {
+      "nombre": "Apex Legends™- Champion Edition",
+      "descripcion": "Una vez trusApex Legends es el galardonado juego de disparos de héroes gratuito de Respawn Entertainment. Controla un elenco en aumento de personajes con habilidades poderosas y disfruta del juego estratégico por escuadrones y de la dinámica de juego innovadora del nuevo Battle Royale de disparos de héroes",
+      "thumbnail": "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg?t=1664321959",
+      "codigo": "19999",
+      "precio": "2",
+      "stock": "99",
+      "id": 1,
+      "timestamp": "10/10/2022 15:05:25"
+    }
+  },
+  {
+    "id": 2,
+    "timestamp": "9/10/2022 17:51:25",
+    "productos": {
+      "nombre": "God of War",
+      "descripcion": "Habiendo consumado su venganza contra los dioses el Olimpo años atrás, Kratos ahora vive como un hombre en el reino de los dioses y los monstruos nórdicos. En este hostil e inhóspito mundo, debe pelear por sobrevivir... y enseñarle a su hijo a hacer lo mismo.",
+      "thumbnail": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg?t=1650554420",
+      "codigo": "23113",
+      "precio": "7356",
+      "stock": "345562",
+      "id": 8,
+      "timestamp": "10/10/2022 15:11:28"
+    }
+  },
+  {
+    "id": 3,
+    "timestamp": "9/10/2022 17:51:25",
+    "productos": {
+      "nombre": "Mafia: Edición Definitiva",
+      "descripcion": "Un percance con la mafia introduce al taxista Tommy Angelo en el crimen organizado. A pesar de su reticencia inicial, las ventajas de unirse a la familia Salieri son demasiadas como para ignorarlas.",
+      "thumbnail": "https://cdn.cloudflare.steamstatic.com/steam/apps/1030840/header.jpg?t=1632420251",
+      "codigo": "243009",
+      "precio": "1567",
+      "stock": "6777",
+      "id": 6,
+      "timestamp": "10/10/2022 15:10:06"
+    }
+  },
+  { "id": 4, "timestamp": "10/10/2022 18:02:08" }
 ]
