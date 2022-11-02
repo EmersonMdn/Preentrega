@@ -31,6 +31,18 @@ const daos = {
       carritoDAO: new CarritoDaoMem(),
     };
   },
+  archivo: async () => {
+    const { default: ProductosDaoArchivo } = await import(
+      "./productos/ProductosDaoArchivo.js"
+    );
+    const { default: CarritoDaoArchivo } = await import(
+      "./carrito/CarritoDaoArchivo.js"
+    );
+    return {
+      productosDAO: new ProductosDaoArchivo(),
+      carritoDAO: new CarritoDaoArchivo(),
+    };
+  },
 };
 
 export default daos[process.env.TIPO];

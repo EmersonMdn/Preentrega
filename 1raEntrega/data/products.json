@@ -1,20 +1,38 @@
 [
   {
-    "nombre": "Lara Sofia Carnevallidasd",
-    "descripcion": "Una chica",
+    "_id": "63602768a408de674a654935",
+    "nombre": "Monitorees Asus",
+    "descripcion": "Muy Bueno",
+    "precio": 27999,
     "thumbnail": "https://picsum.photos/300",
-    "codigo": "34ff3f",
-    "precio": 34244,
-    "stock": 4,
-    "id": "2"
+    "stock": 160,
+    "__v": 0
   },
   {
-    "nombre": "Lara Sofia Carnevalli",
-    "descripcion": "Una chica mala",
+    "_id": "636194e45a8dc399e94d9f5c",
+    "nombre": "Mouse logitech",
+    "descripcion": "Mouse gamer",
+    "precio": 1999,
     "thumbnail": "https://picsum.photos/300",
-    "codigo": "34ff3f",
-    "precio": 34244,
-    "stock": 4,
-    "id": "1"
+    "stock": 14,
+    "__v": 0
+  },
+  {
+    "_id": "63619ae87fc7fe4f152e9221",
+    "nombre": "Placa de video Gforce 1660",
+    "descripcion": "Nvidia Video Gforce",
+    "precio": 151000,
+    "thumbnail": "https://picsum.photos/300",
+    "stock": 54,
+    "__v": 0
+  },
+  {
+    "_id": "6361bf0137136006c9b79eb8",
+    "nombre": "Motherboard H310M H",
+    "descripcion": "Giganyte G310M H",
+    "precio": 45000,
+    "thumbnail": "https://picsum.photos/300",
+    "stock": 98,
+    "__v": 0
   }
 ]
