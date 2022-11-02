@@ -1,7 +1,29 @@
-import { ContenedorMongo } from "../../contenedores/contenerArchivo.js";
+import ContenedorMongo from "../../contenedores/contenerMongoDb.js";
 
 class DAOProductos extends ContenedorMongo {
   constructor() {
-    super();
+    super("productos", {
+      nombre: {
+        type: String,
+        required: true,
+      },
+      descripcion: {
+        type: String,
+      },
+      precio: {
+        type: Number,
+        required: true,
+        min: 50,
+      },
+      thumbnail: {
+        type: String,
+        required: true,
+      },
+      stock: {
+        type: Number,
+        min: 1,
+      },
+    });
   }
 }
+export default DAOProductos;

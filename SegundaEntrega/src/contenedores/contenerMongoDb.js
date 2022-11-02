@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import admin from "firebase-admin";
 import config from "../utils/config.js";
 
 (async () => {
@@ -17,8 +16,9 @@ class ContenedorMongo {
       return data;
     } catch (e) {
       throw new Error(e);
-    }
+    } 
   }
+
   async findById(id) {
     try {
       const data = await this.db.findOne({ _id: id }, { __v: 0 });
@@ -27,6 +27,7 @@ class ContenedorMongo {
       throw new Error(e);
     }
   }
+
   async save(nuevoElemento) {
     try {
       const creado = await this.db.create(nuevoElemento);
@@ -43,19 +44,13 @@ class ContenedorMongo {
       throw new Error(e);
     }
   }
-  async updateMany() {
-    try {
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
   async deleteOne(id) {
     try {
-      const { n, nDeleted } = await this.db.deleteOne({ _id: id });
+      await this.db.deleteOne({ _id: id });
     } catch (e) {
       throw new Error(e);
     }
   }
 }
 
-export { ContenedorMongo };
+export default ContenedorMongo;

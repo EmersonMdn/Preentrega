@@ -1,8 +1,10 @@
-import { ContenedorMongo } from "../../contenedores/contenerArchivo.js";
+import ContenedorMongo from "../../contenedores/contenerMongoDb.js";
 
-export class CarritoDaoMongo extends ContenedorMongo {
+class CarritoDaoMongo extends ContenedorMongo {
   constructor() {
-    super("productos");
+    super("carritos", {
+      productos: { type: [], default: [] },
+    });
   }
-  async addStock() {}
 }
+export default CarritoDaoMongo;
