@@ -13,6 +13,7 @@ router.get("/", async function (req, res) {
 router.get("/:id", async function (req, res) {
   const { id } = req.params;
   const data = await productosDAO.findById(id);
+  console.log(data);
   res.send(data);
 });
 
@@ -33,7 +34,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { _id, nombre, descripcion, thumbnail, precio, stock } = req.body;
   await productosDAO.updateOne({
-    _id,
+    _id, 
     nombre,
     descripcion,
     thumbnail,
@@ -42,5 +43,6 @@ router.put("/:id", async (req, res) => {
   });
   res.send("update!!!");
 });
+
 
 export default router;

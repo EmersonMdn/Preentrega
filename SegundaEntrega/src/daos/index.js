@@ -20,7 +20,7 @@ const daos = {
   },
 
   mem: async () => {
-    const { default: ProductosDaoMem } = await import(
+    const { DAOProductosMem: ProductosDaoMem } = await import(
       "./productos/ProductosDaoMem.js"
     );
     const { default: CarritoDaoMem } = await import(
@@ -41,6 +41,19 @@ const daos = {
     return {
       productosDAO: new ProductosDaoArchivo(),
       carritoDAO: new CarritoDaoArchivo(),
+    };
+  },
+
+  firebase: async () => {
+    const { default: ProductosDaoFirebase } = await import(
+      "./productos/ProductosDaoFirebase.js"
+    );
+    const { default: CarritoDaoFirebase } = await import(
+      "./carrito/CarritoDaoFirebase.js"
+    );
+    return {
+      productosDAO: new ProductosDaoFirebase(),
+      carritoDAO: new CarritoDaoFirebase(),
     };
   },
 };

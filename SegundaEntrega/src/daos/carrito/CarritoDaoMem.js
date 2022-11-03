@@ -1,5 +1,12 @@
-import { ContenedorMongo } from "../../contenedores/contenerMongoDb.js";
+import { ContenedorCarritoMem } from "../../contenedores/contenedorMemo.js";
+import { productos } from "../productos/ProductosDaoMem.js";
 
-class DAOCarritoMem extends ContenedorMongo {}
+const carrito = [];
+
+class DAOCarritoMem extends ContenedorCarritoMem {
+  constructor() {
+    super(carrito, productos);
+  }
+}
 
 export default DAOCarritoMem;

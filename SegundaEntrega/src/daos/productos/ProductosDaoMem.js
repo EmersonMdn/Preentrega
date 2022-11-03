@@ -1,5 +1,11 @@
-import { ContenedorMongo } from "../../contenedores/contenerMongoDb.js";
+import { ContenedorProductosMem } from "../../contenedores/contenedorMemo.js";
 
-class DAOProductosMem extends ContenedorMongo {}
+const productos = [];
 
-export default DAOProductosMem;
+class DAOProductosMem extends ContenedorProductosMem {
+  constructor() {
+    super(productos);
+  }
+}
+
+export  {DAOProductosMem, productos};
