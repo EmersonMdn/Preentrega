@@ -2,7 +2,7 @@ import { ContenedorCarrito } from "../../contenedores/contenedorFirebase.js";
 
 class DAOCarritoFirebase extends ContenedorCarrito {
   constructor() {
-    super("carrito");
+    super("carrito", "producto");
   }
 }
 

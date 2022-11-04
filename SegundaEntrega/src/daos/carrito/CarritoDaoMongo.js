@@ -1,6 +1,6 @@
-import ContenedorMongo from "../../contenedores/contenedorMongoDb.js";
+import { ContenedorCarritoMongo } from "../../contenedores/contenedorMongoDb.js";
 
-class CarritoDaoMongo extends ContenedorMongo {
+class CarritoDaoMongo extends ContenedorCarritoMongo {
   constructor() {
     super("carritos", {
       productos: { type: [], default: [] },

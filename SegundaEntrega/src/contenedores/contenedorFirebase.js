@@ -37,8 +37,7 @@ class ContenedorProductos {
   async updateOne(nuevoElemento) {
     try {
       console.log(nuevoElemento);
-      const { nombre, descripcion, thumbnail, precio, stock } =
-        nuevoElemento;
+      const { nombre, descripcion, thumbnail, precio, stock } = nuevoElemento;
       await this.db
         .doc(nuevoElemento._id)
         .update({ nombre, descripcion, thumbnail, precio, stock });
@@ -56,8 +55,41 @@ class ContenedorProductos {
 }
 
 class ContenedorCarrito {
-  constructor(coleccion) {
+  constructor(coleccion, products) {
     this.db = dataBase.collection(coleccion);
+    this.products = dataBase.collection(products);
+  }
+  async getCart() {
+    const snapShot = await this.db.get();
+    const data = [];
+    snapShot.forEach((doc) => data.push({ id: doc.id, ...doc.data() }));
+    console.log(data);
+    return data;
+  }
+  async newCart() {
+    try {
+      const creado = await this.db.add([]);
+      return creado;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async deleteCart(id) {
+    await this.db.doc(id).delete();
+  }
+
+  async addProduct(cartId, productoId) {
+    const productsSnapshot = await this.products.doc(productoId).get();
+    await this.db.doc(cartId).add(productsSnapshot.data());
+  }
+
+  async deleteProduct(cartId, productoId) {
+    const snapShot = await this.db.doc(cartId).get();
+    const data = [];
+    snapShot.forEach((doc) => data.push({ id: doc.id, ...doc.data() }));
+    console.log(data);
+    const filteredData = data.productos.filter((el) => el.id != productoId);
+    await this.db.doc(cartId).update(filteredData);
   }
 }
 
