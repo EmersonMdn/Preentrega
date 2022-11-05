@@ -1,10 +1,28 @@
 import express from "express";
 import daos from "../daos/index.js";
-
+// esto iria en una carpeta routes, em controller, solo irian las funciones (req,res)
 const { Router } = express;
 const router = Router();
 const { productosDAO } = await daos();
 
+/*
+por ej:
+
+router.get("/", getAllProducts)
+
+en la carpeta controller, en el archivo product.controller.js
+tendras las funciones exportadas
+
+export const getAllProducts = async (req, res)=> {
+  const data = await productosDAO.findAll();
+  res.send(data);
+
+  tambien tendrias que ver las respuestas que se envian, ya que hay que tener en cuenta las respuestas
+  de los errores.
+});
+
+
+*/
 router.get("/", async function (req, res) {
   const data = await productosDAO.findAll();
   res.send(data);
